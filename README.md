@@ -1,154 +1,284 @@
-<div align="center">
+# 🛡️ Secure Storage Lab - Android Security & Persistence
 
-# 🛡️ Secure Storage Lab
-**Un laboratoire d'apprentissage interactif pour la gestion sécurisée des données sur Android.**
+[![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/)
+[![Java](https://img.shields.io/badge/Language-Java-007396?style=for-the-badge&logo=java&logoColor=white)](https://www.oracle.com/java/)
+[![Security](https://img.shields.io/badge/Library-Jetpack_Security-4285F4?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/topic/security/data)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-![Android](https://img.shields.io/badge/Plateforme-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Java](https://img.shields.io/badge/Langage-Java-007396?style=for-the-badge&logo=java&logoColor=white)
-![Security](https://img.shields.io/badge/Bibliothèque-Jetpack_Security-4285F4?style=for-the-badge&logo=android&logoColor=white)
-![GSON](https://img.shields.io/badge/Données-GSON-FF9900?style=for-the-badge&logo=json&logoColor=white)
 
-</div>
-
-<br/>
-
-## 📝 Description du Projet
-
-**Secure Storage Lab** est une application Android open-source conçue pour démontrer les meilleures pratiques en matière de gestion de données et de stockage sur Android. L'objectif principal de ce projet est de montrer comment manipuler différentes méthodes de stockage tout en respectant les normes de sécurité en vigueur. 
-
-Pratique pour un cas d'usage allant de l'enregistrement de l'état d'une application à la sauvegarde de fichiers sensibles via chiffrement matériel, cette application couvre plusieurs exemples concrets utilisant des architectures logicielles modernes.
-
+ 
+Une application Android (Java) démontrant **tous les principaux mécanismes de stockage local** avec les bonnes pratiques de sécurité — SharedPreferences, EncryptedSharedPreferences, fichiers internes, persistance JSON, cache et stockage externe app-specific.
+ 
 ---
-
-## 🏗️ Fonctionnalités & Sécurité
-
-L'application aborde de bout en bout l'écosystème de persistance Android en mettant l'accent sur les éléments suivants :
-
-- 🔒 **EncryptedSharedPreferences:** Utilisation de Jetpack Security pour chiffrer les clés et les valeurs. Assure la protection des préférences de l'utilisateur contre l'extraction via ADB sur les appareils non-rootés.
-- 📂 **Stockage de Fichiers Privés:** Sauvegarde de fichiers de configuration à l'intérieur du stockage interne privé de l'application (isolé des autres applications).
-- 📄 **Stockage sous format JSON:** Conversion d'objets (ex: Entités métier) et sauvegarde en texte clair ou chiffré formaté en JSON avec l'aide de Google **Gson**.
-- ⚡ **Gestion du Cache (Cache File Management):** Création, lecture et nettoyage des fichiers temporaires pour optimiser la mémoire et les performances sans saturer l'espace disque.
-- 💾 **Stockage Externe (External Storage):** Écriture et manipulation sécurisée de fichiers dans les répertoires publics (Downloads/Documents) en gérant correctement les permissions selon la version d'Android.
-
+ 
+## 📱 Aperçu
+ 
+| Application en cours | 
+|----------------------|
+| ![App UI](images/2.png) | 
 ---
-
-## 🎥 Démonstration Vidéo
-
-Voici un aperçu de l'usage général de l'application en conditions réelles :
-
-<div align="center">
-  <video src="images/lab14.mp4" width="250" controls></video>
-</div>
-
+ 
+## 🎯 Objectifs d'apprentissage
+ 
+À l'issue de ce lab, vous serez capable de :
+ 
+- Lire et écrire des préférences non sensibles avec `SharedPreferences` (différence entre `apply()` et `commit()`)
+- Stocker des secrets (tokens) chiffrés via `EncryptedSharedPreferences` + `MasterKey`
+- Écrire et lire des fichiers texte UTF-8 en stockage interne
+- Persister et charger des données structurées en JSON avec Gson
+- Utiliser `cacheDir` pour des données temporaires et le purger manuellement
+- Exporter des fichiers vers le stockage externe app-specific et comprendre le modèle de permissions
+- Appliquer une checklist sécurité : pas de secrets en clair, logs contrôlés, nettoyage explicite
+ 
 ---
-
-## 📱 Captures d'écran & Navigation
-
-<div align="center">
-  <img src="images/1.png" width="24%" alt="Écran principal" />
-  <img src="images/2.png" width="24%" alt="Menu Sécurité" />
-  <img src="images/3.png" width="24%" alt="Logs Exemples" />
-  <img src="images/4.png" width="24%" alt="Stockage JSON" />
-</div>
-<br/>
-<div align="center">
-  <img src="images/5.png" width="24%" alt="Cache Exemple" />
-  <img src="images/6.png" width="24%" alt="Actions" />
-  <img src="images/7.png" width="24%" alt="Stockage Externe" />
-  <img src="images/8.png" width="24%" alt="État des Fichiers" />
-</div>
-
-> _Les écrans mettent en évidence les intéractions utilisateur, comme les champs de formulaires et les boutons d'action de sauvegarde, de lecture et de suppression._
-
----
-
-## 🛠️ Technologies Utilisées
-
-- **Android SDK** (Min API 24, Target API 36)
-- **Langage:** Java 11 ☕
-- **Jetpack Security (crypto):** `androidx.security:security-crypto:1.1.0-alpha06`
-- **Gson:** Pour la modélisation et la désérialisation JSON.
-- **Architecture:** Modèle modulaire séparant la gestion UI de la logique de sauvegarde (`LocalPrefsManager`, `EncryptedPrefsVault`, `LearnersJsonRepository`, etc.).
-
----
-
-## ⚙️ Installation et Utilisation
-
-### Prérequis
-- Android Studio (Ladybug ou plus récent recommandé)
-- Emulateur Android ou appareil physique (Min SDK 24 / Android 7.0)
-
-### Comment lancer l'application
-
-1. **Cloner le projet**
-   ```bash
-   git clone https://github.com/votre-nom/SecureStorageLab.git
-   ```
-2. **Ouvrir le projet**
-   - Lancez **Android Studio**.
-   - Cliquez sur `Open` et sélectionnez le dossier racine du projet `SecureStorageLabJava`.
-3. **Synchroniser Gradle**
-   - Laissez Android Studio télécharger les dépendances (dont Gson et Jetpack Crypto).
-4. **Exécuter**
-   - Branchez votre appareil ou lancez un émulateur, puis cliquez sur le bouton ▶️ **Run 'app'**.
-
-### 💡 Extraits de code de base (Exemple EncryptedSharedPreferences)
-Si vous souhaitez transposer l'authentification sécurisée de l'application dans votre propre projet, voici l'approche générale utilisée dans l'application :
-
-```java
-MasterKey masterKey = new MasterKey.Builder(context)
-     .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-     .build();
-
-SharedPreferences sharedPreferences = EncryptedSharedPreferences.create(
-    context,
-    "secret_shared_prefs",
-    masterKey,
-    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-);
-
-// Sauvegarder (Exemple d'action d'un bouton UI)
-sharedPreferences.edit().putString("SECURE_TOKEN", "12345-ABCDE").apply();
+ 
+## 🏗️ Architecture
+ 
 ```
-
+com.example.securestoragelabjava
+├── MainActivity.java                  # Point d'entrée — orchestre toutes les démos de stockage
+├── prefs/
+│   ├── LocalPrefsManager.java         # SharedPreferences (profil utilisateur : nom, langue, thème)
+│   └── EncryptedPrefsVault.java       # EncryptedSharedPreferences (token API)
+├── files/
+│   ├── PrivateTextFileManager.java    # Fichier texte interne (note.txt)
+│   ├── LearnersJsonRepository.java    # Fichier JSON via Gson (learners.json)
+│   ├── CacheFileManager.java          # Fichiers temporaires dans cacheDir
+│   └── ExternalFileManager.java       # Stockage externe app-specific
+└── model/
+    └── LearnerEntity.java             # Modèle de données
+```
+ 
 ---
-
-## ✅ Tests & Vérification
-
-Pour garantir que chaque mécanisme de stockage fonctionne correctement et de manière sécurisée, nous avons mis en place une série d'étapes de vérification. Vous pouvez suivre la check-list ci-dessous pour tester l'application par vous-même.
-
-### 📋 Mini Check-list de Tests
-
-| Statut | Opération à Tester | Cible de Stockage | Résultat Attendu |
-| :---: | :--- | :--- | :--- |
-| ⬜ | **Sauvegarder (Store)** | `SharedPreferences` (Standard vs Chiffré) | Les données sont sauvegardées sans erreur. La version chiffrée est illisible depuis ADB. |
-| ⬜ | **Lire (Read)** | `Fichiers Privés` & `JSON` | Les données textuelles et objets (Gson) sont relus et affichés correctement dans l'UI. |
-| ⬜ | **Gestion du Cache** | `Cache` | Le fichier est créé. Après un nettoyage (Clear), l'espace métier est libéré et le fichier disparaît. |
-| ⬜ | **Stockage Externe** | `External Files` (Public) | Un fichier est généré dans un répertoire public (nécessite l'autorisation selon la version d'Android). |
-| ⬜ | **Supprimer (Clear)** | *Tous les types* | Les données sont complètement effacées de la mémoire de l'appareil. |
-
-### 🔬 Vérification via les Logs
-
-Il est essentiel d'auditer ce qui se passe sous le capot. Lorsque vous interagissez avec l'application (ex: clic sur "Sauvegarder JSON" ou "Lire le Cache"), des logs système sont générés pour tracer chaque opération d'Entrée/Sortie (I/O) de manière transparente. 
-
-Voici des exemples d'exécution et de debugging :
+ 
+## 🧩 Mécanismes de stockage
+ 
+### 1. SharedPreferences — Profil utilisateur non sensible
+ 
+**Classe :** `LocalPrefsManager`  
+**Fichier sur l'appareil :** `/data/data/<package>/shared_prefs/user_prefs.xml`
+ 
+Stocke le nom d'utilisateur, la langue et le thème dans un fichier XML en clair, privé à l'application.
+ 
+```java
+LocalPrefsManager.persistUserProfile(context, "Hiba", "fr", "dark", false);
+UserProfileSnapshot profile = LocalPrefsManager.retrieveUserProfile(context);
+```
+ 
+> `apply()` est asynchrone (recommandé pour les préférences UI). `commit()` est synchrone et retourne un booléen — utile lorsqu'une confirmation immédiate d'écriture est nécessaire.
+ 
+**Device File Explorer — `user_prefs.xml` en clair :**
+ 
+![user_prefs.xml](images/3.png)
+ 
+---
+ 
+### 2. EncryptedSharedPreferences — Stockage sécurisé du token
+ 
+**Classe :** `EncryptedPrefsVault`  
+**Fichier sur l'appareil :** `/data/data/<package>/shared_prefs/secure_prefs.xml`
+ 
+Utilise `MasterKey` (appuyé sur le Keystore Android) + `EncryptedSharedPreferences` pour chiffrer clés et valeurs au repos. Le token n'est **jamais loggé** — seule sa longueur est affichée.
+ 
+```java
+EncryptedPrefsVault.storeEncryptedToken(context, "1234567890123456789012");
+String token = EncryptedPrefsVault.retrieveEncryptedToken(context);
+// Logcat affiche : "Token stored securely (length=22)"
+```
+ 
+**Contenu sur disque illisible — texte chiffré :**
+ 
+![secure_prefs.xml](images/4.png)
+ 
+---
+ 
+### 3. Fichier texte privé — Stockage interne
+ 
+**Classe :** `PrivateTextFileManager`  
+**Fichier sur l'appareil :** `/data/data/<package>/files/note.txt`
+ 
+Écrit du texte UTF-8 directement dans le répertoire de fichiers privés de l'application via `MODE_PRIVATE`.
+ 
+```java
+fileManager.writeSecureText("note.txt", "Hello Secure World");
+String content = fileManager.readSecureText("note.txt");
+```
+ 
+**`note.txt` vérifié dans le Device File Explorer :**
+ 
+![note.txt dans Device Explorer](images/6.png)
+ 
+---
+ 
+### 4. Stockage JSON — Liste des apprenants
+ 
+**Classe :** `LearnersJsonRepository`  
+**Fichier sur l'appareil :** `/data/data/<package>/files/learners.json`
+ 
+Sérialise une `List<String>` en JSON via Gson et l'écrit en stockage interne. Retourne une liste vide si le fichier est absent ou corrompu.
+ 
+```java
+jsonRepo.saveLearners(List.of("Alice", "Bob"));
+List<String> loaded = jsonRepo.loadLearners(); // ["Alice", "Bob"]
+```
+ 
+**Contenu de `learners.json` vérifié dans le Device Explorer :**
+ 
+![learners.json](images/7.png)
+ 
+---
+ 
+### 5. Stockage Cache — Données temporaires
+ 
+**Classe :** `CacheFileManager`  
+**Répertoire sur l'appareil :** `/data/data/<package>/cache/`
+ 
+Écrit du contenu temporaire dans `cacheDir`. Le système (ou l'utilisateur via les Paramètres) peut vider ce répertoire à tout moment — n'y stocker que des données régénérables.
+ 
+```java
+cacheManager.writeCache("cache_note.txt", "Cached Hello World");
+String cached = cacheManager.readCache("cache_note.txt");
+cacheManager.clearCache("cache_note.txt"); // purge explicite
+```
+ 
+**Répertoire cache dans le Device Explorer :**
+ 
+![répertoire cache](images/9.png)
+ 
+---
+ 
+### 6. Stockage Externe App-Specific
+ 
+**Classe :** `ExternalFileManager`  
+**Répertoire sur l'appareil :** `/sdcard/Android/data/<package>/files/`
+ 
+Utilise `getExternalFilesDir(null)` — aucune permission `READ/WRITE_EXTERNAL_STORAGE` requise sur API 29+. Les fichiers sont supprimés lors de la désinstallation de l'application.
+ 
+```java
+extManager.writeExternalFile("external_note.txt", "External Secure World");
+String content = extManager.readExternalFile("external_note.txt");
+```
+ 
+**Chemin externe visible dans le Device Explorer sous `storage/emulated/0/Android/data/` :**
+ 
+![stockage externe](images/10.png)
+ 
+---
+ 
+## 🔒 Checklist Sécurité
+ 
+| # | Règle | Statut |
+|---|-------|--------|
+| 1 | Aucun token/mot de passe n'apparaît dans Logcat — longueur uniquement | ✅ |
+| 2 | `EncryptedSharedPreferences` utilisé pour les secrets | ✅ |
+| 3 | `MODE_PRIVATE` pour tous les fichiers internes et préférences claires | ✅ |
+| 4 | Token masqué dans l'UI (longueur uniquement affichée) | ✅ |
+| 5 | Nettoyage complet : prefs + prefs chiffrées + fichiers + cache | ✅ |
+| 6 | Cache réservé aux données temporaires régénérables | ✅ |
+| 7 | Stockage externe limité au chemin app-specific (pas public) | ✅ |
+| 8 | Exceptions gérées sans fuite d'informations sensibles | ✅ |
+| 9 | Encodage UTF-8 imposé pour tous les fichiers texte | ✅ |
+| 10 | Concept d'expiration du token : timestamp de création + invalidation locale après TTL | ✅ |
+| 11 | Vérification effectuée via Device File Explorer | ✅ |
+ 
+---
+ 
+## 🚀 Démarrage
+ 
+### Prérequis
+ 
+- Android Studio (dernière version stable)
+- Appareil Android ou émulateur — API 24 minimum
+- Aucune connexion Internet requise à l'exécution
+ 
+### Installation
+ 
+1. Cloner le dépôt et l'ouvrir dans Android Studio.
+2. Vérifier que les dépendances sont présentes dans `build.gradle` (Module : app) :
+ 
+```groovy
+dependencies {
+    implementation "androidx.security:security-crypto:1.1.0-alpha06"
+    implementation "com.google.code.gson:gson:2.10.1"
+}
+```
+ 
+3. Synchroniser Gradle, puis **lancer** l'application sur un appareil ou émulateur connecté.
+ 
+### Vérification du stockage
+ 
+Utiliser le **Device Explorer** (Android Studio → View → Tool Windows → Device Explorer) pour naviguer dans :
+ 
+```
+/data/data/com.example.securestoragelabjava/
+├── cache/              → cache_note.txt
+├── files/
+│   ├── note.txt        → "Hello Secure World"
+│   └── learners.json   → ["Alice","Bob"]
+└── shared_prefs/
+    ├── user_prefs.xml   → texte en clair (nom, langue, thème)
+    └── secure_prefs.xml → texte chiffré (token)
+```
+ 
+Fichier externe :
+```
+/sdcard/Android/data/com.example.securestoragelabjava/files/external_note.txt
+```
+ 
+---
+ 
+## 🧹 Nettoyage de toutes les données
+ 
+Appuyer sur le bouton **Tout effacer** dans l'application pour vider chaque emplacement de stockage :
+ 
+- SharedPreferences → `wipePreferences()`
+- EncryptedSharedPreferences → `wipeEncryptedVault()`
+- Fichier texte interne → `deleteFile("note.txt")`
+- Fichier JSON → `deleteFile("learners.json")`
+- Cache → `clearCache("cache_note.txt")`
+- Fichier externe → `deleteExternalFile("external_note.txt")`
 
 <div align="center">
-  <img src="images/9.png" width="45%" alt="Exemple de log et trace 1 - Écriture réussie" />
-  <img src="images/10.png" width="45%" alt="Exemple de log et trace 2 - Lecture et déchiffrement" />
+  <video width="480" controls>
+    <source src="images/lab14.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
-
-> **Astuce de debug :** Ouvrez l'onglet **Logcat** dans Android Studio et utilisez la barre de recherche avec le tag `SecureStorageLab` pour suivre de près l'état des I/O ou les erreurs liées de près à des problèmes de permissions.
-
 ---
+ 
+## 📊 Notes sur les performances
+ 
+Toutes les opérations de stockage sont instrumentées avec un horodatage en nanosecondes dans Logcat (tag `VaultLabJava`). Valeurs observées typiques :
+ 
+| Opération | Durée approximative |
+|-----------|---------------------|
+| `persistUserProfile` | ~5 ms (1er appel) / ~0,07 ms (suivants) |
+| `buildSecurePreferences` (init EncryptedPrefs) | ~385 ms (1er) / ~57 ms (suivants) |
+| `storeEncryptedToken` | ~390 ms |
+| `retrieveEncryptedToken` | ~59 ms |
+| `saveLearners` (JSON) | ~9 ms |
+ 
+> L'initialisation d'`EncryptedSharedPreferences` est coûteuse — il est conseillé de l'initialiser une seule fois au démarrage de l'application plutôt qu'à chaque accès.
+ 
+---
+ 
+## 📚 Concepts clés
+ 
+**`apply()` vs `commit()`**  
+`apply()` écrit de manière asynchrone sur disque — pas de valeur de retour, sans bloquer le thread principal. `commit()` écrit de manière synchrone et retourne `true`/`false`. Utiliser `apply()` pour les préférences UI courantes ; utiliser `commit()` uniquement lorsqu'une garantie d'écriture est nécessaire avant l'opération suivante.
+ 
+**Pourquoi `MODE_PRIVATE` ?**  
+Tout autre mode (`MODE_WORLD_READABLE`, `MODE_WORLD_WRITEABLE`) est déprécié et dangereux. `MODE_PRIVATE` garantit que seul l'UID de votre application peut accéder au fichier.
+ 
+**Pourquoi ne pas stocker les tokens dans des SharedPreferences classiques ?**  
+Sur les appareils rootés ou via la sauvegarde ADB, les fichiers `shared_prefs/*.xml` sont accessibles en clair. `EncryptedSharedPreferences` chiffre clés et valeurs avec AES-256-GCM, la clé maître étant stockée dans le Keystore Android (matérielle sur les appareils compatibles).
+ 
+**Expiration du token**  
+Stocker un timestamp `created_at` avec le token. À chaque chargement, comparer avec un TTL (ex. : 24 heures). Si expiré, vider le vault et forcer une nouvelle authentification.
+ 
+---
+ 
+## 📄 Licence
+ 
+MIT — libre d'utilisation à des fins pédagogiques.
 
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! 
-Si vous repérez une faille de sécurité potentielle, une optimisation de code ou un ajustement d'interface, n'hésitez pas à ouvrir une *Issue* ou à soumettre une *Pull Request*.
-
-## 📜 Licence
-
-Ce projet est sous licence MIT. Libre à vous de l'utiliser pour vos cours, votre entreprise ou pour vos recherches en sécurité mobile.
-"# Sauvegarde-des-donn-es-SharedPreferences-et-fichiers-avec-bonnes-pratiques-de-s-curit-" 
