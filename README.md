@@ -238,12 +238,9 @@ Appuyer sur le bouton **Tout effacer** dans l'application pour vider chaque empl
 - Cache → `clearCache("cache_note.txt")`
 - Fichier externe → `deleteExternalFile("external_note.txt")`
 
-<div align="center">
-  <video width="480" controls>
-    <source src="images/lab14.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+<video width="480" controls>
+  <source src="https://hibalahrouf.github.io/Sauvegarde-des-donn-es-SharedPreferences-et-fichiers-avec-bonnes-pratiques-de-s-curit-/images/lab14.mp4" type="video/mp4">
+</video>
 ---
  
 ## 📊 Notes sur les performances
