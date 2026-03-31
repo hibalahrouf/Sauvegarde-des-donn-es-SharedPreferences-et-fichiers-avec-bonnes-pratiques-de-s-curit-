@@ -238,9 +238,9 @@ Appuyer sur le bouton **Tout effacer** dans l'application pour vider chaque empl
 - Cache → `clearCache("cache_note.txt")`
 - Fichier externe → `deleteExternalFile("external_note.txt")`
 
-<video width="480" controls>
-  <source src="https://hibalahrouf.github.io/Sauvegarde-des-donn-es-SharedPreferences-et-fichiers-avec-bonnes-pratiques-de-s-curit-/images/lab14.mp4" type="video/mp4">
-</video>
+## Démonstration
+[https://github.com/user-attachments/assets/e7739886-24ac-44e8-aece-4bc2f44b7f49](https://github.com/user-attachments/assets/758da45c-1cc9-4edf-9114-e74fdf99dce9)
+
 ---
  
 ## 📊 Notes sur les performances
